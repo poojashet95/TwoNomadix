@@ -22,11 +22,17 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-frontend_origin = os.getenv("FRONTEND_ORIGIN", "http://localhost:5173")
+frontend_origin = os.getenv("FRONTEND_ORIGIN")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[frontend_origin, "http://127.0.0.1:5173"],
+    allow_origins=[
+        "https://www.twonomadix.com",
+        "https://twonomadix.com",
+        "https://twonomadix-app.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
